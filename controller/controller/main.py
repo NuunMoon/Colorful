@@ -44,9 +44,16 @@ def estabilish_handshake(ser):
     print(f"{end - start} seconds elapsed to estabilish handshake")
 
 
-def calculate_average_color(rgb_array: NDArray) -> NDArray:
+def calculate_average_color(rgb_array: NDArray, sample_count: int) -> NDArray:
     """Calculates the average color of an image"""
-    return np.mean(rgb_array, axis=(0, 1))
+    average_color = np.asarray([0, 0, 0])
+    for _ in range(0, sample_count):
+        r_row = random.randint(0, rgb_array.shape[0] - 1)
+        r_col = random.randint(0, rgb_array.shape[1] - 1)
+        r_pixel = rgb_array[r_row][r_col]
+        average_color += r_pixel
+
+    return average_color / sample_count
 
 
 SAMPLE_COUNT = 5000
@@ -66,7 +73,7 @@ if __name__ == "__main__":
                 imgdata = screenshot_to_rgb()
 
                 # Calculate the dominant color
-                average = calculate_average_color(imgdata)
+                average = calculate_average_color(imgdata, SAMPLE_COUNT)
 
                 data_to_transmit = (
                     f"r{int(average[0])}g{int(average[1])}b{int(average[2])}E"
