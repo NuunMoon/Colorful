@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "colorful-controller"
+version = "0.1.0"
+description = ""
+authors = ["NuunMoon <NuunMoon@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.23.3"
+Pillow = "^9.2.0"
+pyserial = "^3.5"
+keyboard = "^0.13.5"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2"
+pylint = "^2.15.3"
+mypy = "^0.982"
+black = { version = "^22.8.0", allow-prereleases = true }
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+plugins = ["numpy.typing.mypy_plugin"]

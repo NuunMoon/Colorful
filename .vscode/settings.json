@@ -1,0 +1,12 @@
+{
+    "mypy.targets": [
+        "./controller/controller"
+    ],
+    "mypy.configFile": "./controller/pyproject.toml",
+    "spellright.language": [
+        "en_US"
+    ],
+    "spellright.documentTypes": [
+        "markdown"
+    ]
+}
